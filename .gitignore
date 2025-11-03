@@ -6,3 +6,5 @@ moodtune_env/
 
 # Ignore all __pycache__ folders anywhere in the project
 __pycache__/
+
+.env
