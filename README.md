@@ -1,5 +1,5 @@
 
-# MoodTune 🎭🎵🎬  
+# MoodTune   
 **Your emotions. Your soundtrack. Your movie. Your *perfect* moment.**
 
 An **AI-powered web app** that:
@@ -11,7 +11,7 @@ An **AI-powered web app** that:
 
 ---
 
-## 🚀 Features
+## Features
 
 | Feature | Status |
 |-------|--------|
@@ -27,7 +27,7 @@ An **AI-powered web app** that:
 
 ---
 
-## 🛠️ Tech Stack
+##  Tech Stack
 
 ```text
 Frontend: HTML, CSS, JavaScript (Vanilla)
@@ -40,7 +40,7 @@ Storage:  JSON (q_table.json, stats.json, shown_history.json)
 
 ---
 
-## 📂 Project Structure
+##  Project Structure
 
 ```bash
 moodtune/
@@ -97,7 +97,7 @@ Open: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🎮 How to Use
+##  How to Use
 
 1. **Click "Start Scan"**  
 2. **Look at camera** → Emotion detected  
@@ -109,7 +109,7 @@ Open: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🧠 How It Learns
+##  How It Learns
 
 - **Q-Learning Agent** updates preferences  
 - **Shown History** prevents repeats  
@@ -118,7 +118,7 @@ Open: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🛡️ Data & Privacy
+##  Data & Privacy
 
 - **No cloud storage**  
 - All data saved locally in `data/`  
@@ -126,7 +126,7 @@ Open: [http://localhost:5000](http://localhost:5000)
 
 ---
 
-## 🔧 Customization
+## Customization
 
 ### Add Mindfulness Tips
 ```python
@@ -142,7 +142,7 @@ rl_agent = QLearningAgent(alpha=0.2, epsilon=0.3)
 
 ---
 
-## 🐛 Troubleshooting
+##  Troubleshooting
 
 | Issue | Fix |
 |------|-----|
