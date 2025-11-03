@@ -1,0 +1,87 @@
+{
+  "sad_song": {
+    "6JLbMP9MeGB7Odhw8PO1QB": 0.29701,
+    "2CoWmo3eVb0QCyikAvWmc0": -0.041,
+    "4KPyLpz5P6yyZTiiN4Bv9L": -0.03209
+  },
+  "sad_movie": {
+    "Inside Out": 0.1,
+    "The Pursuit of Happyness": -0.041,
+    "Good Will Hunting": 0.10900000000000001
+  },
+  "neutral_song": {
+    "6VrBWh90BiwWmwKtvwWFcq": 0.3940399,
+    "1LOq9dhGdooVe9KwNFDwuA": 0.315139501,
+    "01MV13Hg9sfFNtgcMidjgE": -0.061471499,
+    "6vNuyohxSW9rChRMpzIbA2": 0.060028501,
+    "4xF4ZBGPZKxECeDFrqSAG4": -0.03209,
+    "3EPxiSj3RsjMMdKCM7pthV": 0.23284990000000003,
+    "3jixbQHg5vDuZRNqzordcI": 0.0828499,
+    "0VvXKMWs7mCONrpeKIHFjz": -0.03209,
+    "2g9aiiRu6dteue5VD4DoOF": 0.23284990000000003,
+    "65JnVWnreYlOHFNlqJ8Vg5": 0.23284990000000003,
+    "0WtM2NBVQNNJLh6scP13H8": 0.1267309,
+    "1s7oOCT8vauUh01PbJD6ps": 0.1267309,
+    "5iwz1NiezX7WWjnCgY5TH4": 0.1267309,
+    "6hgoYQDUcPyCz7LcTUHKxa": 0.1267309
+  },
+  "neutral_movie": {
+    "Lost in Translation": 0.3940399,
+    "Her": -0.03209,
+    "Our Fault": -0.0232691,
+    "The Ugly Stepsister": 0.1267309,
+    "My Fault": 0.1267309,
+    "Regretting You": 0.1267309,
+    "Forrest Gump": -0.0232691,
+    "Pan's Labyrinth": 0.1267309,
+    "Your Fault": -0.0232691,
+    "Paterson": -0.014536409,
+    "Before Sunrise": 0.13546359100000002
+  },
+  "happy_song": {
+    "2pW5kNCx133MWWirxegvng": 0.1,
+    "6n4LpWn6gFvczitm1QMi3R": 0.10900000000000001,
+    "7yCF65vpc7sUwPjftI0iFb": 0.10981000000000002,
+    "5H0Yfo3acNXU278LqN47pA": -0.0401171,
+    "3n6tB0RkaxQkgWtF1LmsU9": 0.1098829,
+    "7LqhdpcXoke9VgHsDj3AoP": -0.040110539,
+    "2FnmKpYraHvKyKdsy7KDOK": 0.10988946100000002,
+    "6Ys3extOt6Qs7w5m3NVM0q": -0.04010994851,
+    "5KMj4vhaIhGx6vLKXc4iS8": 0.10989005149
+  },
+  "happy_movie": {
+    "Our Fault": 0.1,
+    "Demon Slayer: Kimetsu no Yaiba Infinity Castle": 0.10900000000000001,
+    "The Ugly Stepsister": -0.040190000000000003,
+    "KPop Demon Hunters": 0.10981000000000002,
+    "Chainsaw Man - The Movie: Reze Arc": 0.1098829,
+    "Coco": 0.10988946100000002,
+    "My Fault": -0.04010994851,
+    "Regretting You": 0.10989005149,
+    "Three Jolly Fellows": -0.040109895365900004,
+    "Forrest Gump": 0.10989010463410001,
+    "Your Fault": -0.040109890582931,
+    "Evangelion: 3.0+1.0 Thrice Upon a Time": 0.109890109417069
+  },
+  "fear_song": {
+    "26udEXUy0ArsKgMbHUIote": 0.1,
+    "3hyBoIy38YUp05ATChhGms": 0.10900000000000001,
+    "0sTlGEld0h8kIPZaKDYUf4": 0.10981000000000002,
+    "6xsOIolcDvXCHyJkpWJVuk": 0.1098829,
+    "4U8ivupUadwLV2hOTrXutZ": 0.10988946100000002,
+    "2tSB3yPpsbuo2c8LOlNhFL": -0.04010994851,
+    "3CFJqlHFnat02udi7WFtjc": -0.04010994851,
+    "1MjM6ti9QMaX9Vg9ZDtgPu": 0.10989005149
+  },
+  "fear_movie": {
+    "Demon Slayer: Kimetsu no Yaiba Infinity Castle": 0.1
+  },
+  "surprise_movie": {
+    "Inception": 0.16320338029,
+    "Arrival": 0.011588071000000005,
+    "Everything Everywhere All at Once": 0.20415978100000004
+  },
+  "surprise_song": {
+    "7LqhdpcXoke9VgHsDj3AoP": 0.1
+  }
+}

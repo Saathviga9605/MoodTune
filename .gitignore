@@ -1,0 +1,8 @@
+# Ignore virtual environment
+moodtune_env/
+
+# Ignore cache files/folders
+.cache/
+
+# Ignore all __pycache__ folders anywhere in the project
+__pycache__/

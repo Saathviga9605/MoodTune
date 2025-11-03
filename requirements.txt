@@ -1,0 +1,11 @@
+flask==3.0.0
+opencv-python==4.11.0.86        # supports Python 3.13 per release notes :contentReference[oaicite:0]{index=0}
+fer==22.5.1                      # as used previously
+mtcnn==1.0.0                    # as used previously
+numpy>=2.1.0,<3.0                # NumPy 2.x supports Python 3.13
+pillow>=11.0.0
+moviepy                         # no strict version fixed; install latest that supports Python 3.13
+spotipy==2.23.0
+requests==2.31.0
+python-dotenv==1.0.0
+flask-cors==4.0.0

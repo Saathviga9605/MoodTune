@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodTune - AI-Powered Emotion Detection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🧠</div>
+                    <h1 class="logo-text">MoodTune</h1>
+                </div>
+                <div class="header-badge">
+                    <span class="badge-icon">⚡</span>
+                    <span>AI-Powered Emotion Detection</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Home View -->
+        <div id="home-view" class="view active">
+            <div class="container">
+                <div class="hero">
+                    <div class="hero-badge">
+                        <span class="sparkle">✨</span>
+                        <span>Powered by Computer Vision & Reinforcement Learning</span>
+                    </div>
+                    
+                    <h2 class="hero-title">
+                        Discover Content That<br>
+                        <span class="gradient-text">Matches Your Mood</span>
+                    </h2>
+                    
+                    <p class="hero-subtitle">
+                        Using advanced facial emotion recognition and AI learning algorithms, 
+                        we curate personalized music, movies, and mindfulness recommendations just for you.
+                    </p>
+
+                    <button id="start-scan-btn" class="btn btn-primary btn-large">
+                        <span class="btn-icon">📷</span>
+                        Start Emotion Scan
+                    </button>
+                </div>
+
+                <!-- Features Grid -->
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3 class="feature-title">Deep Learning CNN</h3>
+                        <p class="feature-desc">Advanced neural networks analyze 68 facial landmarks</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📈</div>
+                        <h3 class="feature-title">Q-Learning AI</h3>
+                        <p class="feature-desc">System learns your preferences with every interaction</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎵</div>
+                        <h3 class="feature-title">Smart Curation</h3>
+                        <p class="feature-desc">Personalized recommendations that improve over time</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scanning View with Embedded Camera -->
+        <div id="scanning-view" class="view">
+            <div class="container">
+                <div class="scanning-card">
+                    <h3 class="scanning-title">Analyzing Your Emotion...</h3>
+                    <p class="scanning-subtitle">Position your face in the camera view</p>
+                    
+                    <!-- Embedded Video Feed -->
+                    <div class="video-container">
+                        <img id="video-feed" src="" alt="Camera Feed" class="video-feed">
+                    </div>
+                    
+                    <div class="progress-info">
+                        <p class="progress-text">
+                            <span id="progress-frames">0</span>/30 frames analyzed 
+                            (<span id="progress-percent">0</span>%)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results View -->
+        <div id="results-view" class="view">
+            <div class="container">
+                <!-- Emotion Display -->
+                <div class="emotion-card">
+                    <div class="emotion-header">
+                        <div class="emotion-left">
+                            <div id="emotion-emoji" class="emotion-emoji">😊</div>
+                            <div>
+                                <h2 id="emotion-name" class="emotion-name">Happy</h2>
+                                <p class="emotion-confidence">Detected with <span id="confidence-value">87</span>% confidence</p>
+                            </div>
+                        </div>
+                        <div class="stats-box">
+                            <div class="stat-row">
+                                <div class="stat-label">Total</div>
+                                <div id="total-interactions" class="stat-value">0</div>
+                            </div>
+                            <div class="stat-row">
+                                <div class="stat-label">Like Rate</div>
+                                <div id="like-rate" class="stat-value">0%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button class="tab active" data-tab="songs">
+                        <span class="tab-icon">🎵</span>
+                        Music
+                    </button>
+                    <button class="tab" data-tab="movies">
+                        <span class="tab-icon">🎬</span>
+                        Movies
+                    </button>
+                    <button class="tab" data-tab="mindfulness">
+                        <span class="tab-icon">❤️</span>
+                        Mindfulness
+                    </button>
+                </div>
+
+                <!-- Tab Content -->
+                <div class="tab-content-container">
+                    <!-- Songs Tab - Tinder Style -->
+                    <div id="songs-tab" class="tab-content active">
+                        <h3 class="content-title">Swipe Your Way to Perfect Music 🎵</h3>
+                        
+                        <!-- Swipe Card -->
+                        <div class="swipe-container">
+                            <div class="swipe-card" id="song-card">
+                                <div class="card-content">
+                                    <div class="album-art">🎵</div>
+                                    <h4 id="song-title" class="card-title">Loading...</h4>
+                                    <p id="song-artist" class="card-subtitle">Artist</p>
+                                    <p id="song-album" class="card-info">Album</p>
+                                </div>
+                                
+                                <div class="swipe-buttons">
+                                    <button id="song-dislike-btn" class="swipe-btn dislike-btn">
+                                        <span class="btn-icon">👎</span>
+                                        <span class="btn-text">Pass</span>
+                                    </button>
+                                    <button id="song-like-btn" class="swipe-btn like-btn">
+                                        <span class="btn-icon">❤️</span>
+                                        <span class="btn-text">Love It</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Swipe Indicators -->
+                            <div class="swipe-indicator left" id="song-pass-indicator">
+                                <span>👎 PASS</span>
+                            </div>
+                            <div class="swipe-indicator right" id="song-love-indicator">
+                                <span>❤️ LOVE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Movies Tab - Tinder Style -->
+                    <div id="movies-tab" class="tab-content">
+                        <h3 class="content-title">Swipe Your Way to Perfect Movies 🎬</h3>
+                        
+                        <!-- Swipe Card -->
+                        <div class="swipe-container">
+                            <div class="swipe-card" id="movie-card">
+                                <div class="card-content">
+                                    <div class="movie-poster">🎬</div>
+                                    <h4 id="movie-title" class="card-title">Loading...</h4>
+                                    <p id="movie-year" class="card-subtitle">Year</p>
+                                    <p id="movie-overview" class="card-info">Overview</p>
+                                </div>
+                                
+                                <div class="swipe-buttons">
+                                    <button id="movie-dislike-btn" class="swipe-btn dislike-btn">
+                                        <span class="btn-icon">👎</span>
+                                        <span class="btn-text">Pass</span>
+                                    </button>
+                                    <button id="movie-like-btn" class="swipe-btn like-btn">
+                                        <span class="btn-icon">❤️</span>
+                                        <span class="btn-text">Love It</span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Swipe Indicators -->
+                            <div class="swipe-indicator left" id="movie-pass-indicator">
+                                <span>👎 PASS</span>
+                            </div>
+                            <div class="swipe-indicator right" id="movie-love-indicator">
+                                <span>❤️ LOVE</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mindfulness Tab -->
+                    <div id="mindfulness-tab" class="tab-content">
+                        <h3 class="content-title">Mindfulness Tips for Your Mood</h3>
+                        <div id="mindfulness-list" class="mindfulness-list"></div>
+                    </div>
+                </div>
+
+                <!-- Reset Button -->
+                <div class="reset-container">
+                    <button id="reset-btn" class="btn btn-secondary">
+                        <span class="btn-icon">🔄</span>
+                        Scan Again
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>MoodTune - AI-Powered Emotion Detection System</p>
+            <p class="footer-subtitle">Using Computer Vision (FER) & Reinforcement Learning (Q-Learning)</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

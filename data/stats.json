@@ -1,0 +1,47 @@
+{
+  "total_interactions": 102,
+  "likes": 61,
+  "dislikes": 30,
+  "emotion_interactions": {
+    "neutral": 48,
+    "happy": 22,
+    "surprise": 15,
+    "sad": 8,
+    "fear": 9
+  },
+  "content_stats": {
+    "song": {
+      "surprise": 2,
+      "sad": 5,
+      "neutral": 28,
+      "happy": 9,
+      "fear": 8
+    },
+    "movie": {
+      "surprise": 9,
+      "sad": 3,
+      "neutral": 14,
+      "happy": 12,
+      "fear": 1
+    }
+  },
+  "total_reward": 5.0,
+  "song_feedbacks": {
+    "6VrBWh90BiwWmwKtvwWFcq": {
+      "likes": 4,
+      "dislikes": 2
+    },
+    "2pW5kNCx133MWWirxegvng": {
+      "likes": 1,
+      "dislikes": 0
+    },
+    "7LqhdpcXoke9VgHsDj3AoP": {
+      "likes": 2,
+      "dislikes": 1
+    },
+    "0LxieATP1Hom8KueHdG9V2": {
+      "likes": 0,
+      "dislikes": 1
+    }
+  }
+}
