@@ -100,3 +100,23 @@
 {"timestamp": "2025-11-03T19:28:59.796836", "emotion": "neutral", "song_id": "01MV13Hg9sfFNtgcMidjgE", "reward": -0.5}
 {"timestamp": "2025-11-03T19:29:00.938583", "emotion": "neutral", "song_id": "1LOq9dhGdooVe9KwNFDwuA", "reward": 1.0}
 {"timestamp": "2025-11-03T19:29:02.308020", "emotion": "neutral", "song_id": "6vNuyohxSW9rChRMpzIbA2", "reward": -0.5}
+{"timestamp": "2025-11-03T20:23:30.350359", "emotion": "neutral", "song_id": "6VrBWh90BiwWmwKtvwWFcq", "reward": 1.0}
+{"timestamp": "2025-11-03T20:23:31.859344", "emotion": "neutral", "song_id": "1LOq9dhGdooVe9KwNFDwuA", "reward": -0.5}
+{"timestamp": "2025-11-03T20:23:33.321822", "emotion": "neutral", "song_id": "3EPxiSj3RsjMMdKCM7pthV", "reward": 1.0}
+{"timestamp": "2025-11-03T20:23:42.570838", "emotion": "neutral", "song_id": "Lost in Translation", "reward": 1.0}
+{"timestamp": "2025-11-03T20:23:43.634861", "emotion": "neutral", "song_id": "Before Sunrise", "reward": -0.5}
+{"timestamp": "2025-11-03T20:23:51.499670", "emotion": "neutral", "song_id": "Paterson", "reward": 1.0}
+{"timestamp": "2025-11-03T20:23:53.579595", "emotion": "neutral", "song_id": "Her", "reward": -0.5}
+{"timestamp": "2025-11-03T20:30:36.400611", "emotion": "neutral", "song_id": "6VrBWh90BiwWmwKtvwWFcq", "reward": 1.0}
+{"timestamp": "2025-11-03T20:30:36.400922", "emotion": "neutral", "song_id": "Our Fault", "reward": 1.0}
+{"timestamp": "2025-11-03T20:30:37.988216", "emotion": "neutral", "song_id": "01MV13Hg9sfFNtgcMidjgE", "reward": 1.0}
+{"timestamp": "2025-11-03T20:30:38.908519", "emotion": "neutral", "song_id": "1LOq9dhGdooVe9KwNFDwuA", "reward": -0.5}
+{"timestamp": "2025-11-03T20:30:39.798821", "emotion": "neutral", "song_id": "4xF4ZBGPZKxECeDFrqSAG4", "reward": 1.0}
+{"timestamp": "2025-11-03T20:30:40.663904", "emotion": "neutral", "song_id": "5pr0jFzUS0sUW3ftEsiidL", "reward": -0.5}
+{"timestamp": "2025-11-03T20:30:41.918515", "emotion": "neutral", "song_id": "3EPxiSj3RsjMMdKCM7pthV", "reward": 1.0}
+{"timestamp": "2025-11-03T20:30:43.053080", "emotion": "neutral", "song_id": "3jixbQHg5vDuZRNqzordcI", "reward": 1.0}
+{"timestamp": "2025-11-03T20:30:45.550010", "emotion": "neutral", "song_id": "The Ugly Stepsister", "reward": -0.5}
+{"timestamp": "2025-11-03T20:30:46.440664", "emotion": "neutral", "song_id": "My Fault", "reward": 1.0}
+{"timestamp": "2025-11-03T20:30:47.231940", "emotion": "neutral", "song_id": "Regretting You", "reward": -0.5}
+{"timestamp": "2025-11-03T20:30:48.062308", "emotion": "neutral", "song_id": "Forrest Gump", "reward": 1.0}
+{"timestamp": "2025-11-03T20:30:48.876567", "emotion": "neutral", "song_id": "Pan's Labyrinth", "reward": -0.5}

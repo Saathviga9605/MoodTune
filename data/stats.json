@@ -1,9 +1,9 @@
 {
-  "total_interactions": 102,
-  "likes": 61,
-  "dislikes": 30,
+  "total_interactions": 122,
+  "likes": 73,
+  "dislikes": 38,
   "emotion_interactions": {
-    "neutral": 48,
+    "neutral": 68,
     "happy": 22,
     "surprise": 15,
     "sad": 8,
@@ -13,14 +13,14 @@
     "song": {
       "surprise": 2,
       "sad": 5,
-      "neutral": 28,
+      "neutral": 38,
       "happy": 9,
       "fear": 8
     },
     "movie": {
       "surprise": 9,
       "sad": 3,
-      "neutral": 14,
+      "neutral": 24,
       "happy": 12,
       "fear": 1
     }

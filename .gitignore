@@ -8,3 +8,5 @@ moodtune_env/
 __pycache__/
 
 .env
+
+.cache
