@@ -4,6 +4,7 @@ Handles Spotify and TMDB API integrations
 """
 
 import os
+import time
 import requests
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
@@ -17,6 +18,8 @@ class SpotifyAPI:
         self.client_id = os.getenv('SPOTIPY_CLIENT_ID')
         self.client_secret = os.getenv('SPOTIPY_CLIENT_SECRET')
         self.sp = None
+        self.cache = {}
+        self.cache_ttl = 300
         
         if self.client_id and self.client_secret:
             try:
@@ -30,9 +33,16 @@ class SpotifyAPI:
     
     def search_songs_by_emotion(self, emotion, limit=15):
         """Search for songs based on emotion"""
+        cache_key = (emotion.lower(), int(limit))
+        cached = self.cache.get(cache_key)
+        if cached and (time.time() - cached['timestamp'] < self.cache_ttl):
+            return cached['data']
+
         if not self.sp:
             print("Spotify API not initialized, using fallback")
-            return FALLBACK_SONGS.get(emotion, [])
+            songs = FALLBACK_SONGS.get(emotion, [])
+            self.cache[cache_key] = {'timestamp': time.time(), 'data': songs[:limit]}
+            return songs[:limit]
         
         try:
             queries = EMOTION_MUSIC_QUERIES.get(emotion, ['music'])
@@ -53,11 +63,15 @@ class SpotifyAPI:
                     }
                     all_songs.append(song_data)
             
-            return all_songs[:limit]
+            songs = all_songs[:limit]
+            self.cache[cache_key] = {'timestamp': time.time(), 'data': songs}
+            return songs
         
         except Exception as e:
             print(f"Spotify search failed: {e}")
-            return FALLBACK_SONGS.get(emotion, [])
+            songs = FALLBACK_SONGS.get(emotion, [])
+            self.cache[cache_key] = {'timestamp': time.time(), 'data': songs[:limit]}
+            return songs[:limit]
 
 
 class TMDBAPI:
@@ -65,12 +79,21 @@ class TMDBAPI:
         self.api_key = os.getenv('TMDB_API_KEY')
         self.base_url = 'https://api.themoviedb.org/3'
         self.image_base_url = 'https://image.tmdb.org/t/p/w500'
+        self.cache = {}
+        self.cache_ttl = 300
     
     def search_movies_by_emotion(self, emotion, limit=4):
         """Search for movies based on emotion"""
+        cache_key = (emotion.lower(), int(limit))
+        cached = self.cache.get(cache_key)
+        if cached and (time.time() - cached['timestamp'] < self.cache_ttl):
+            return cached['data']
+
         if not self.api_key:
             print("TMDB API key not found, using fallback")
-            return FALLBACK_MOVIES.get(emotion, [])
+            movies = FALLBACK_MOVIES.get(emotion, [])
+            self.cache[cache_key] = {'timestamp': time.time(), 'data': movies[:limit]}
+            return movies[:limit]
         
         try:
             genres = EMOTION_MOVIE_GENRES.get(emotion, ['drama'])
@@ -101,11 +124,15 @@ class TMDBAPI:
                 }
                 movies.append(movie_data)
             
-            return movies if movies else FALLBACK_MOVIES.get(emotion, [])
+            resolved = movies if movies else FALLBACK_MOVIES.get(emotion, [])
+            self.cache[cache_key] = {'timestamp': time.time(), 'data': resolved[:limit]}
+            return resolved[:limit]
         
         except Exception as e:
             print(f"TMDB search failed: {e}")
-            return FALLBACK_MOVIES.get(emotion, [])
+            movies = FALLBACK_MOVIES.get(emotion, [])
+            self.cache[cache_key] = {'timestamp': time.time(), 'data': movies[:limit]}
+            return movies[:limit]
     
     def _get_genre_ids(self, genre_names):
         """Get genre IDs from genre names"""

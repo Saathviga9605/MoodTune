@@ -14,17 +14,13 @@ def ensure_directories():
     for directory in directories:
         os.makedirs(directory, exist_ok=True)
 
-def log_interaction(emotion: str, song_id: str, reward: float):
-    """Log user interaction for analytics"""
+def log_event(event_type: str, payload: Dict):
+    """Append a structured event to the JSONL interaction log."""
     ensure_directories()
     
-    log_entry = {
-        'timestamp': datetime.now().isoformat(),
-        'emotion': emotion,
-        'song_id': song_id,
-        'reward': reward
-    }
-    
+    log_entry = {'timestamp': datetime.now().isoformat(), 'event_type': event_type}
+    log_entry.update(payload)
+
     log_file = 'logs/interactions.jsonl'
     
     try:
@@ -32,6 +28,17 @@ def log_interaction(emotion: str, song_id: str, reward: float):
             f.write(json.dumps(log_entry) + '\n')
     except Exception as e:
         print(f"Error logging interaction: {e}")
+
+
+def log_interaction(emotion: str, song_id: str, reward: float, metadata: Dict = None):
+    """Log user interaction for analytics."""
+    payload = {
+        'emotion': emotion,
+        'content_id': song_id,
+        'reward': reward,
+        'metadata': metadata or {}
+    }
+    log_event('interaction', payload)
 
 def get_emotion_color(emotion: str) -> str:
     """Get color code for emotion"""
@@ -95,7 +102,7 @@ def calculate_session_stats(q_table: Dict) -> Dict:
 
 def validate_emotion(emotion: str) -> bool:
     """Validate if emotion is supported"""
-    valid_emotions = ['happy', 'sad', 'angry', 'neutral', 'surprise', 'fear', 'disgust']
+    valid_emotions = ['happy', 'sad', 'angry', 'neutral', 'surprise', 'fear', 'disgust', 'calm', 'relaxed', 'stressed']
     return emotion.lower() in valid_emotions
 
 def sanitize_filename(filename: str) -> str:

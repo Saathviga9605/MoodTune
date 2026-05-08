@@ -1,24 +1,29 @@
 {
   "sad_song": {
-    "6JLbMP9MeGB7Odhw8PO1QB": 0.29701,
+    "6JLbMP9MeGB7Odhw8PO1QB": 0.3940399,
     "2CoWmo3eVb0QCyikAvWmc0": -0.041,
-    "4KPyLpz5P6yyZTiiN4Bv9L": -0.03209
+    "4KPyLpz5P6yyZTiiN4Bv9L": -0.03209,
+    "0JChw6k59cZxegh0SGceE1": -0.014536409,
+    "5ULIvl0zduD2l9g6hdXnDo": 0.13546359100000002,
+    "0q6LuUqGLUiCPP1cbdwFs3": -0.014536409,
+    "0ZRTBsgVroKktG2qJoIzoo": 0.13546359100000002,
+    "1fcXn2WjZlTcuy228dUPVJ": 0.13546359100000002
   },
   "sad_movie": {
-    "Inside Out": 0.1,
+    "Inside Out": 0.19981000000000002,
     "The Pursuit of Happyness": -0.041,
     "Good Will Hunting": 0.10900000000000001
   },
   "neutral_song": {
-    "6VrBWh90BiwWmwKtvwWFcq": 0.58519850599,
-    "1LOq9dhGdooVe9KwNFDwuA": 0.2526289209301,
+    "6VrBWh90BiwWmwKtvwWFcq": 0.6793465209301001,
+    "1LOq9dhGdooVe9KwNFDwuA": 0.388507215720799,
     "01MV13Hg9sfFNtgcMidjgE": 0.09734351643910004,
     "6vNuyohxSW9rChRMpzIbA2": 0.060028501,
     "4xF4ZBGPZKxECeDFrqSAG4": 0.12378686553910001,
-    "3EPxiSj3RsjMMdKCM7pthV": 0.4709743441201001,
+    "3EPxiSj3RsjMMdKCM7pthV": 0.4350180965917991,
     "3jixbQHg5vDuZRNqzordcI": 0.2272327755391,
     "0VvXKMWs7mCONrpeKIHFjz": -0.03209,
-    "2g9aiiRu6dteue5VD4DoOF": 0.23284990000000003,
+    "2g9aiiRu6dteue5VD4DoOF": 0.37070609688370904,
     "65JnVWnreYlOHFNlqJ8Vg5": 0.23284990000000003,
     "0WtM2NBVQNNJLh6scP13H8": 0.1267309,
     "1s7oOCT8vauUh01PbJD6ps": 0.1267309,
@@ -27,8 +32,8 @@
     "5pr0jFzUS0sUW3ftEsiidL": 0.002667865539100001
   },
   "neutral_movie": {
-    "Lost in Translation": 0.490099501,
-    "Her": -0.03477204491,
+    "Lost in Translation": 0.58519850599,
+    "Her": 0.12137302512010004,
     "Our Fault": 0.12316676509000003,
     "The Ugly Stepsister": 0.10816676509,
     "My Fault": 0.25816676509,
@@ -36,19 +41,24 @@
     "Forrest Gump": 0.12316676509000003,
     "Pan's Labyrinth": 0.10816676509,
     "Your Fault": -0.0232691,
-    "Paterson": 0.13102618699000002,
-    "Before Sunrise": 0.11602618699000002
+    "Paterson": 0.12059143383010001,
+    "Before Sunrise": 0.10709143383010002
   },
   "happy_song": {
-    "2pW5kNCx133MWWirxegvng": 0.1,
+    "2pW5kNCx133MWWirxegvng": 0.297891203587759,
     "6n4LpWn6gFvczitm1QMi3R": 0.10900000000000001,
     "7yCF65vpc7sUwPjftI0iFb": 0.10981000000000002,
     "5H0Yfo3acNXU278LqN47pA": -0.0401171,
-    "3n6tB0RkaxQkgWtF1LmsU9": 0.1098829,
+    "3n6tB0RkaxQkgWtF1LmsU9": 0.07570481832289831,
     "7LqhdpcXoke9VgHsDj3AoP": -0.040110539,
-    "2FnmKpYraHvKyKdsy7KDOK": 0.10988946100000002,
+    "2FnmKpYraHvKyKdsy7KDOK": 0.2257107232228983,
     "6Ys3extOt6Qs7w5m3NVM0q": -0.04010994851,
-    "5KMj4vhaIhGx6vLKXc4iS8": 0.10989005149
+    "5KMj4vhaIhGx6vLKXc4iS8": 0.0757112546638983,
+    "h1": 0.08959120832289831,
+    "h2": 0.08284620832289831,
+    "song_abc123": 0.10781020832289832,
+    "song_4": 0.10681020832289832,
+    "song_5": 0.10481020832289832
   },
   "happy_movie": {
     "Our Fault": 0.1,
@@ -62,7 +72,11 @@
     "Three Jolly Fellows": -0.040109895365900004,
     "Forrest Gump": 0.10989010463410001,
     "Your Fault": -0.040109890582931,
-    "Evangelion: 3.0+1.0 Thrice Upon a Time": 0.109890109417069
+    "Evangelion: 3.0+1.0 Thrice Upon a Time": 0.109890109417069,
+    "The Grand Budapest Hotel": 0.06769230765367823,
+    "Am\u00e9lie": 0.08269230768854607,
+    "Paddington 2": 0.306703296699852,
+    "The Secret Life of Walter Mitty": 0.06769230769168419
   },
   "fear_song": {
     "26udEXUy0ArsKgMbHUIote": 0.1,
@@ -80,9 +94,26 @@
   "surprise_movie": {
     "Inception": 0.16320338029,
     "Arrival": 0.011588071000000005,
-    "Everything Everywhere All at Once": 0.20415978100000004
+    "Everything Everywhere All at Once": 0.20415978100000004,
+    "Demon Slayer: Kimetsu no Yaiba Infinity Castle": -0.03162561971,
+    "Black Phone 2": 0.11837438029000001
   },
   "surprise_song": {
-    "7LqhdpcXoke9VgHsDj3AoP": 0.1
+    "7LqhdpcXoke9VgHsDj3AoP": 0.3940399,
+    "2FnmKpYraHvKyKdsy7KDOK": 0.073528501,
+    "6Ys3extOt6Qs7w5m3NVM0q": 0.210028501,
+    "66w7lK0t98OPgvYjXp39IP": 0.13546359100000002,
+    "1aQ58u4guUf999iQX3J2HF": -0.014536409,
+    "5nDZex75Z6bcIBVzYX9k2c": 0.13546359100000002,
+    "0JX7Es2j556FwtR6YqMKzP": 0.13546359100000002,
+    "5KMj4vhaIhGx6vLKXc4iS8": -0.014536409,
+    "3NkkcnnKrNHv4AiGaPdD76": -0.014536409,
+    "7o65z7yxlOfbAiDxq9WZBy": 0.13546359100000002,
+    "0LxieATP1Hom8KueHdG9V2": 0.13546359100000002,
+    "3S7XptLRvV6bZrmrz7WhmA": -0.014536409,
+    "song_def456": 0.10846359100000001,
+    "song_1": 0.11046359100000001,
+    "song_2": 0.10846359100000001,
+    "song_3": 0.009463591
   }
 }

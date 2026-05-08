@@ -7,10 +7,10 @@ from flask_cors import CORS
 import os
 from datetime import timedelta
 import cv2
-import base64
 import numpy as np
 import threading
 import time
+from collections import deque
 
 from cv.emotion_detector import EmotionDetector
 from rl.q_learning import QLearningAgent
@@ -19,6 +19,7 @@ from config.emotions import MINDFULNESS_TIPS, FALLBACK_SONGS, FALLBACK_MOVIES
 from utils.helpers import (
     ensure_directories, 
     log_interaction, 
+    log_event,
     format_song_data, 
     format_movie_data,
     validate_emotion
@@ -39,9 +40,23 @@ tmdb_api = TMDBAPI()
 
 # Global variables for video streaming
 camera = None
-emotion_data = {'emotion': None, 'confidence': 0, 'frame_count': 0, 'emotions_detected': []}
+emotion_data = {
+    'emotion': None,
+    'confidence': 0,
+    'raw_emotion': None,
+    'raw_confidence': 0,
+    'stabilized_emotion': None,
+    'stabilized_confidence': 0,
+    'frame_count': 0,
+    'emotions_detected': [],
+    'emotion_scores': {},
+    'latency_ms': 0.0,
+}
 detection_active = False
 detection_lock = threading.Lock()
+emotion_trajectory = deque(maxlen=50)  # Increased from 20 to capture full detection (30 frames)
+recommendation_cache = {}
+RECOMMENDATION_CACHE_TTL = 300
 
 @app.route('/')
 def index():
@@ -61,36 +76,52 @@ def generate_frames():
         frame = cv2.flip(frame, 1)
 
         try:
-            results = emotion_detector.emotion_detector.detect_emotions(frame)
-            if results and len(results) > 0:
-                result = results[0]
-                box = result['box']
-                x, y, w, h = box
-                emotions = result['emotions']
-                dominant_emotion = max(emotions.items(), key=lambda item: item[1])
-                emotion_name = dominant_emotion[0]
-                emotion_score = dominant_emotion[1]
+            frame_state = emotion_detector.process_frame(frame)
 
-                if emotion_score >= 0.3:
-                    with detection_lock:
-                        emotion_data['emotions_detected'].append(emotion_name)
-                        emotion_data['frame_count'] = len(emotion_data['emotions_detected'])
+            if frame_state['face_detected']:
+                x, y, w, h = frame_state['face_box']
+                raw_emotion = frame_state['raw_emotion']
+                raw_confidence = frame_state['raw_confidence']
+                stabilized_emotion = frame_state['stabilized_emotion']
+                stabilized_confidence = frame_state['stabilized_confidence']
+
+                with detection_lock:
+                    emotion_data['raw_emotion'] = raw_emotion
+                    emotion_data['raw_confidence'] = raw_confidence
+                    emotion_data['stabilized_emotion'] = stabilized_emotion
+                    emotion_data['stabilized_confidence'] = stabilized_confidence
+                    emotion_data['emotion'] = stabilized_emotion
+                    emotion_data['confidence'] = stabilized_confidence
+                    emotion_data['emotion_scores'] = frame_state['emotion_scores']
+                    emotion_data['latency_ms'] = frame_state['latency_ms']
+                    emotion_data['frame_count'] += 1
+                    emotion_data['emotions_detected'].append(stabilized_emotion)
+                    emotion_trajectory.append({
+                        'timestamp': time.time(),
+                        'raw_emotion': raw_emotion,
+                        'stabilized_emotion': stabilized_emotion,
+                        'stabilized_confidence': stabilized_confidence,
+                    })
 
                 cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 3)
-                label = f"{emotion_name}: {emotion_score:.2f}"
-                label_size = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 0.8, 2)[0]
-                cv2.rectangle(frame, (x, y - label_size[1] - 15), (x + label_size[0] + 10, y), (0, 255, 0), -1)
-                cv2.putText(frame, label, (x + 5, y - 8), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0, 0, 0), 2)
 
-                y_offset = 40
-                for emo, score in sorted(emotions.items(), key=lambda x: x[1], reverse=True):
-                    bar_width = int(score * 150)
-                    cv2.rectangle(frame, (10, y_offset - 15), (10 + bar_width, y_offset), 
-                                (0, 255, 0) if emo == emotion_name else (100, 100, 100), -1)
+                header_text = f"Raw: {raw_emotion} {raw_confidence:.2f} | Stable: {stabilized_emotion} {stabilized_confidence:.2f}"
+                header_size = cv2.getTextSize(header_text, cv2.FONT_HERSHEY_SIMPLEX, 0.55, 1)[0]
+                cv2.rectangle(frame, (max(0, x), max(0, y - 44)), (min(frame.shape[1] - 10, x + header_size[0] + 18), y), (0, 255, 0), -1)
+                cv2.putText(frame, header_text, (x + 8, y - 18), cv2.FONT_HERSHEY_SIMPLEX, 0.55, (0, 0, 0), 1)
+
+                y_offset = 34
+                for emo in emotion_detector.emotion_labels:
+                    score = frame_state['emotion_scores'].get(emo, 0.0)
+                    bar_width = int(score * 160)
+                    cv2.rectangle(frame, (10, y_offset - 14), (10 + bar_width, y_offset),
+                                  (0, 255, 0) if emo == stabilized_emotion else (90, 90, 90), -1)
                     text = f"{emo}: {score:.2f}"
-                    cv2.putText(frame, text, (165, y_offset - 3), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
-                    y_offset += 30
+                    cv2.putText(frame, text, (175, y_offset - 2), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (255, 255, 255), 1)
+                    y_offset += 26
             else:
+                with detection_lock:
+                    emotion_data['latency_ms'] = frame_state['latency_ms']
                 cv2.putText(frame, "Position your face in frame", (50, 50), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
         except Exception as e:
@@ -102,7 +133,7 @@ def generate_frames():
 
         cv2.rectangle(frame, (20, frame.shape[0] - 50), (frame.shape[1] - 20, frame.shape[0] - 30), (50, 50, 50), -1)
         cv2.rectangle(frame, (20, frame.shape[0] - 50), (20 + bar_width, frame.shape[0] - 30), (0, 255, 0), -1)
-        progress_text = f"Analyzing: {emotion_data['frame_count']}/{required_frames} ({progress:.0f}%)"
+        progress_text = f"Analyzing: {emotion_data['frame_count']}/{required_frames} ({progress:.0f}%) | Latency {emotion_data.get('latency_ms', 0.0):.0f}ms"
         cv2.putText(frame, progress_text, (25, frame.shape[0] - 60), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (255, 255, 255), 2)
 
         ret, buffer = cv2.imencode('.jpg', frame)
@@ -125,12 +156,26 @@ def video_feed():
 def start_detection():
     global detection_active, emotion_data
     detection_active = True
-    emotion_data = {'emotion': None, 'confidence': 0, 'frame_count': 0, 'emotions_detected': []}
+    emotion_detector.reset_state()
+    emotion_trajectory.clear()
+    emotion_data = {
+        'emotion': None,
+        'confidence': 0,
+        'raw_emotion': None,
+        'raw_confidence': 0,
+        'stabilized_emotion': None,
+        'stabilized_confidence': 0,
+        'frame_count': 0,
+        'emotions_detected': [],
+        'emotion_scores': {},
+        'latency_ms': 0.0,
+    }
     
     # CLEAR SESSION
     session.pop('songs', None)
     session.pop('movies', None)
     session.pop('current_emotion', None)
+    session.pop('previous_emotion', None)
     session.pop('song_index', None)
     session.pop('movie_index', None)
     
@@ -145,10 +190,8 @@ def get_detection_status():
     global emotion_data, detection_active
     with detection_lock:
         if emotion_data['frame_count'] >= 30 and emotion_data['emotions_detected']:
-            from collections import Counter
-            emotion_counts = Counter(emotion_data['emotions_detected'])
-            dominant_emotion, count = emotion_counts.most_common(1)[0]
-            confidence = count / len(emotion_data['emotions_detected'])
+            dominant_emotion = emotion_data.get('stabilized_emotion') or emotion_data.get('emotion') or 'neutral'
+            confidence = float(emotion_data.get('stabilized_confidence') or emotion_data.get('confidence') or 0.0)
             emotion_data['emotion'] = dominant_emotion
             emotion_data['confidence'] = confidence
             detection_active = False
@@ -156,12 +199,22 @@ def get_detection_status():
                 'complete': True,
                 'emotion': dominant_emotion,
                 'confidence': float(confidence),
-                'frame_count': emotion_data['frame_count']
+                'raw_emotion': emotion_data.get('raw_emotion'),
+                'raw_confidence': float(emotion_data.get('raw_confidence', 0.0)),
+                'stabilized_emotion': dominant_emotion,
+                'stabilized_confidence': float(confidence),
+                'emotion_scores': emotion_data.get('emotion_scores', {}),
+                'frame_count': emotion_data['frame_count'],
             })
         return jsonify({
             'complete': False,
             'frame_count': emotion_data['frame_count'],
-            'progress': min((emotion_data['frame_count'] / 30) * 100, 100)
+            'progress': min((emotion_data['frame_count'] / 30) * 100, 100),
+            'raw_emotion': emotion_data.get('raw_emotion'),
+            'raw_confidence': float(emotion_data.get('raw_confidence', 0.0)),
+            'stabilized_emotion': emotion_data.get('stabilized_emotion'),
+            'stabilized_confidence': float(emotion_data.get('stabilized_confidence', 0.0)),
+            'emotion_scores': emotion_data.get('emotion_scores', {}),
         })
 
 @app.route('/api/stop-detection', methods=['POST'])
@@ -180,6 +233,18 @@ def get_recommendations():
             return jsonify({'error': 'Invalid emotion'}), 400
 
         session['current_emotion'] = emotion
+        # Use the first detected emotion from the trajectory as the starting point for transitions
+        # This preserves the emotion sequence from detection (e.g., happy→angry→surprise)
+        if emotion_trajectory and not session.get('previous_emotion'):
+            first_trajectory_emotion = emotion_trajectory[0].get('stabilized_emotion')
+            if first_trajectory_emotion:
+                session['previous_emotion'] = first_trajectory_emotion
+        session['previous_emotion'] = session.get('previous_emotion') or emotion
+
+        cache_key = emotion.lower()
+        cached = recommendation_cache.get(cache_key)
+        if cached and (time.time() - cached['timestamp'] < RECOMMENDATION_CACHE_TTL):
+            return jsonify(cached['response'])
 
         # Fetch songs
         songs = spotify_api.search_songs_by_emotion(emotion, limit=20)
@@ -200,14 +265,20 @@ def get_recommendations():
         session['song_index'] = 0
         session['movie_index'] = 0
 
-        return jsonify({
+        response_payload = {
             'success': True,
             'emotion': emotion,
             'songs': format_song_data(songs),
             'movies': format_movie_data(movies),
             'mindfulness': mindfulness,
-            'rl_stats': rl_agent.get_stats()
-        })
+            'rl_stats': rl_agent.get_stats(),
+            'analytics': rl_agent.get_analytics(),
+        }
+        recommendation_cache[cache_key] = {
+            'timestamp': time.time(),
+            'response': response_payload,
+        }
+        return jsonify(response_payload)
 
     except Exception as e:
         print(f"Error in get_recommendations: {e}")
@@ -264,12 +335,42 @@ def feedback_song():
         emotion = request.json.get('emotion')
         song_id = request.json.get('song_id')
         liked = request.json.get('liked', False)
+        engagement_score = float(request.json.get('engagement_score', 0.0))
+        completion_score = float(request.json.get('completion_score', 1.0))
+        mood_improvement_score = float(request.json.get('mood_improvement_score', 0.0))
         if not emotion or not song_id:
             return jsonify({'error': 'Missing required fields'}), 400
 
-        reward = 1.0 if liked else -0.5
-        rl_agent.update_q_value(emotion, song_id, reward, content_type='song')
-        log_interaction(emotion, song_id, reward)
+        feedback_score = 1.0 if liked else -1.0
+        reward = rl_agent.update_q_value(
+            emotion,
+            song_id,
+            content_type='song',
+            feedback_score=feedback_score,
+            engagement_score=engagement_score,
+            mood_improvement_score=mood_improvement_score,
+            completion_score=completion_score,
+            previous_emotion=session.get('previous_emotion'),
+            next_emotion=session.get('current_emotion'),
+            metadata={'liked': liked}
+        )
+        log_interaction(emotion, song_id, reward, metadata={
+            'content_type': 'song',
+            'liked': liked,
+            'engagement_score': engagement_score,
+            'completion_score': completion_score,
+            'mood_improvement_score': mood_improvement_score,
+        })
+        log_event('feedback', {
+            'emotion': emotion,
+            'content_type': 'song',
+            'content_id': song_id,
+            'reward': reward,
+            'engagement_score': engagement_score,
+            'completion_score': completion_score,
+            'mood_improvement_score': mood_improvement_score,
+            'liked': liked,
+        })
 
         songs = session.get('songs', [])
         current_index = session.get('song_index', 0)
@@ -279,12 +380,14 @@ def feedback_song():
 
         next_index = rl_agent.select_action(emotion, songs, content_type='song', exclude_indices=[current_index])
         session['song_index'] = next_index
+        session['previous_emotion'] = emotion
 
         return jsonify({
             'success': True,
             'next_song': format_song_data([songs[next_index]])[0],
             'next_index': next_index,
-            'rl_stats': rl_agent.get_stats()
+            'rl_stats': rl_agent.get_stats(),
+            'analytics': rl_agent.get_analytics(),
         })
     except Exception as e:
         print(f"Error in feedback-song: {e}")
@@ -299,12 +402,42 @@ def feedback_movie():
         emotion = request.json.get('emotion')
         movie_title = request.json.get('movie_title')
         liked = request.json.get('liked', False)
+        engagement_score = float(request.json.get('engagement_score', 0.0))
+        completion_score = float(request.json.get('completion_score', 1.0))
+        mood_improvement_score = float(request.json.get('mood_improvement_score', 0.0))
         if not emotion or not movie_title:
             return jsonify({'error': 'Missing required fields'}), 400
 
-        reward = 1.0 if liked else -0.5
-        rl_agent.update_q_value(emotion, movie_title, reward, content_type='movie')
-        log_interaction(emotion, movie_title, reward)
+        feedback_score = 1.0 if liked else -1.0
+        reward = rl_agent.update_q_value(
+            emotion,
+            movie_title,
+            content_type='movie',
+            feedback_score=feedback_score,
+            engagement_score=engagement_score,
+            mood_improvement_score=mood_improvement_score,
+            completion_score=completion_score,
+            previous_emotion=session.get('previous_emotion'),
+            next_emotion=session.get('current_emotion'),
+            metadata={'liked': liked}
+        )
+        log_interaction(emotion, movie_title, reward, metadata={
+            'content_type': 'movie',
+            'liked': liked,
+            'engagement_score': engagement_score,
+            'completion_score': completion_score,
+            'mood_improvement_score': mood_improvement_score,
+        })
+        log_event('feedback', {
+            'emotion': emotion,
+            'content_type': 'movie',
+            'content_id': movie_title,
+            'reward': reward,
+            'engagement_score': engagement_score,
+            'completion_score': completion_score,
+            'mood_improvement_score': mood_improvement_score,
+            'liked': liked,
+        })
 
         movies = session.get('movies', [])
         current_index = session.get('movie_index', 0)
@@ -314,12 +447,14 @@ def feedback_movie():
 
         next_index = rl_agent.select_action(emotion, movies, content_type='movie', exclude_indices=[current_index])
         session['movie_index'] = next_index
+        session['previous_emotion'] = emotion
 
         return jsonify({
             'success': True,
             'next_movie': format_movie_data([movies[next_index]])[0],
             'next_index': next_index,
-            'rl_stats': rl_agent.get_stats()
+            'rl_stats': rl_agent.get_stats(),
+            'analytics': rl_agent.get_analytics(),
         })
     except Exception as e:
         print(f"Error in feedback-movie: {e}")
@@ -330,7 +465,14 @@ def feedback_movie():
 @app.route('/api/stats', methods=['GET'])
 def get_stats():
     try:
-        return jsonify({'success': True, 'stats': rl_agent.get_stats()})
+        return jsonify({'success': True, 'stats': rl_agent.get_stats(), 'analytics': rl_agent.get_analytics()})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/analytics', methods=['GET'])
+def get_analytics():
+    try:
+        return jsonify({'success': True, 'analytics': rl_agent.get_analytics()})
     except Exception as e:
         return jsonify({'error': str(e)}), 500
 
@@ -339,6 +481,8 @@ def reset_session():
     global detection_active
     detection_active = False
     session.clear()
+    recommendation_cache.clear()
+    emotion_trajectory.clear()
     return jsonify({'success': True, 'message': 'Session reset'})
 
 @app.errorhandler(404)

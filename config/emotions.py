@@ -10,7 +10,10 @@ EMOTION_COLORS = {
     'neutral': '#95A5A6',
     'surprise': '#F39C12',
     'fear': '#8E44AD',
-    'disgust': '#16A085'
+    'disgust': '#16A085',
+    'calm': '#2EC4B6',
+    'relaxed': '#A8E6CF',
+    'stressed': '#FF6F61'
 }
 
 EMOTION_EMOJIS = {
@@ -20,7 +23,10 @@ EMOTION_EMOJIS = {
     'neutral': '😐',
     'surprise': '😲',
     'fear': '😨',
-    'disgust': '🤢'
+    'disgust': '🤢',
+    'calm': '🫧',
+    'relaxed': '😌',
+    'stressed': '😰'
 }
 
 # Fallback songs when API fails
@@ -111,6 +117,10 @@ FALLBACK_SONGS = {
     ]
 }
 
+FALLBACK_SONGS['calm'] = FALLBACK_SONGS['neutral']
+FALLBACK_SONGS['relaxed'] = FALLBACK_SONGS['neutral']
+FALLBACK_SONGS['stressed'] = FALLBACK_SONGS['neutral']
+
 # Fallback movies
 FALLBACK_MOVIES = {
     'happy': [
@@ -156,6 +166,10 @@ FALLBACK_MOVIES = {
         {'title': 'Mean Girls', 'year': 2004, 'poster_path': '/fXm3YKXAEjx7d2tIWDg9TfRZtsU.jpg'},
     ]
 }
+
+FALLBACK_MOVIES['calm'] = FALLBACK_MOVIES['neutral']
+FALLBACK_MOVIES['relaxed'] = FALLBACK_MOVIES['neutral']
+FALLBACK_MOVIES['stressed'] = FALLBACK_MOVIES['neutral']
 
 # Mindfulness tips for each emotion
 MINDFULNESS_TIPS = {
@@ -207,6 +221,27 @@ MINDFULNESS_TIPS = {
         'Take a refreshing shower or wash your face',
         'Practice self-compassion and kindness',
         'Distance yourself from the source if possible'
+    ],
+    'calm': [
+        'Let this steadiness support the rest of your day',
+        'Notice the calmness in your breathing',
+        'Use this moment to plan one small meaningful task',
+        'Stay with the sensation of ease for a few breaths',
+        'Protect the calm by limiting unnecessary stimulation'
+    ],
+    'relaxed': [
+        'Let the relaxation settle fully into your body',
+        'Enjoy the slower pace without forcing the next task',
+        'Extend this feeling with soft music or a quiet walk',
+        'Notice where your muscles have softened',
+        'Use this state to recharge before the next challenge'
+    ],
+    'stressed': [
+        'Reduce input and simplify your next action',
+        'Take 10 slow breaths and lengthen your exhale',
+        'Name the most urgent task and ignore the rest for now',
+        'Relax your shoulders and unclench your jaw',
+        'Swap urgency for a single manageable step'
     ]
 }
 
@@ -221,6 +256,10 @@ EMOTION_MUSIC_QUERIES = {
     'disgust': ['empowering', 'strong', 'confident', 'motivational', 'uplifting']
 }
 
+EMOTION_MUSIC_QUERIES['calm'] = ['calm', 'soothing', 'ambient', 'relaxing', 'peaceful']
+EMOTION_MUSIC_QUERIES['relaxed'] = ['relaxing', 'acoustic', 'ambient', 'soft', 'peaceful']
+EMOTION_MUSIC_QUERIES['stressed'] = ['calming', 'stress relief', 'lofi', 'peaceful', 'breathing']
+
 # Movie genres by emotion
 EMOTION_MOVIE_GENRES = {
     'happy': ['comedy', 'family', 'romance', 'animation'],
@@ -231,3 +270,7 @@ EMOTION_MOVIE_GENRES = {
     'fear': ['animation', 'family', 'adventure'],
     'disgust': ['comedy', 'drama']
 }
+
+EMOTION_MOVIE_GENRES['calm'] = ['documentary', 'drama']
+EMOTION_MOVIE_GENRES['relaxed'] = ['drama', 'family']
+EMOTION_MOVIE_GENRES['stressed'] = ['documentary', 'family']

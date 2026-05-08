@@ -1,27 +1,27 @@
 {
-  "total_interactions": 122,
-  "likes": 73,
-  "dislikes": 38,
+  "total_interactions": 180,
+  "likes": 112,
+  "dislikes": 57,
   "emotion_interactions": {
-    "neutral": 68,
-    "happy": 22,
-    "surprise": 15,
-    "sad": 8,
+    "neutral": 76,
+    "happy": 41,
+    "surprise": 39,
+    "sad": 15,
     "fear": 9
   },
   "content_stats": {
     "song": {
-      "surprise": 2,
-      "sad": 5,
-      "neutral": 38,
-      "happy": 9,
+      "surprise": 24,
+      "sad": 11,
+      "neutral": 42,
+      "happy": 19,
       "fear": 8
     },
     "movie": {
-      "surprise": 9,
-      "sad": 3,
-      "neutral": 24,
-      "happy": 12,
+      "surprise": 11,
+      "sad": 4,
+      "neutral": 28,
+      "happy": 21,
       "fear": 1
     }
   },

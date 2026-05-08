@@ -353,6 +353,265 @@ body::before {
     box-shadow: var(--shadow-md);
 }
 
+/* Live Affect Panel */
+.live-affect-panel,
+.analytics-card {
+    margin-top: 24px;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 22px;
+    backdrop-filter: blur(18px);
+    box-shadow: var(--shadow-lg);
+}
+
+.live-affect-header,
+.analytics-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.live-affect-title,
+.analytics-title {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.live-affect-meta,
+.analytics-subtitle {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+}
+
+.live-affect-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.live-affect-card,
+.metric-pill,
+.analytics-panel {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 16px;
+}
+
+.live-label,
+.metric-label {
+    display: block;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 6px;
+}
+
+.confidence-bars {
+    display: grid;
+    gap: 10px;
+}
+
+.confidence-row {
+    display: grid;
+    gap: 6px;
+}
+
+.confidence-row-label {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.8);
+    text-transform: capitalize;
+}
+
+.confidence-track,
+.distribution-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+}
+
+.confidence-fill,
+.distribution-fill {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.25s ease;
+}
+
+.confidence-fill.happy,
+.distribution-fill.happy { background: linear-gradient(90deg, #f9d423, #ff4e50); }
+.confidence-fill.sad,
+.distribution-fill.sad { background: linear-gradient(90deg, #4facfe, #00f2fe); }
+.confidence-fill.angry,
+.distribution-fill.angry { background: linear-gradient(90deg, #f857a6, #ff5858); }
+.confidence-fill.neutral,
+.distribution-fill.neutral { background: linear-gradient(90deg, #7f8c8d, #bdc3c7); }
+.confidence-fill.surprise,
+.distribution-fill.surprise { background: linear-gradient(90deg, #f6d365, #fda085); }
+.confidence-fill.fear,
+.distribution-fill.fear { background: linear-gradient(90deg, #8e2de2, #4a00e0); }
+.confidence-fill.disgust,
+.distribution-fill.disgust { background: linear-gradient(90deg, #11998e, #38ef7d); }
+.confidence-fill.calm,
+.distribution-fill.calm { background: linear-gradient(90deg, #2ec4b6, #7de2d1); }
+.confidence-fill.relaxed,
+.distribution-fill.relaxed { background: linear-gradient(90deg, #a8e6cf, #dcedc1); }
+.confidence-fill.stressed,
+.distribution-fill.stressed { background: linear-gradient(90deg, #ff6f61, #ff9671); }
+
+.analytics-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.metric-pill strong,
+.live-affect-card strong {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 2px;
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.analytics-panel h4 {
+    font-size: 14px;
+    margin-bottom: 14px;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.analytics-panel-wide {
+    grid-column: 1 / -1;
+}
+
+.mini-chart {
+    height: 120px;
+    display: flex;
+    align-items: end;
+    gap: 6px;
+    min-height: 120px;
+}
+
+.mini-bar {
+    flex: 1;
+    min-width: 8px;
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.28));
+}
+
+.trajectory-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.trajectory-chip {
+    padding: 8px 10px;
+    border-radius: 999px;
+    font-size: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.trajectory-chip.happy { background: rgba(255, 214, 0, 0.18); }
+.trajectory-chip.sad { background: rgba(74, 144, 226, 0.18); }
+.trajectory-chip.angry { background: rgba(231, 76, 60, 0.18); }
+.trajectory-chip.neutral { background: rgba(149, 165, 166, 0.18); }
+.trajectory-chip.surprise { background: rgba(243, 156, 18, 0.18); }
+.trajectory-chip.fear { background: rgba(142, 68, 173, 0.18); }
+.trajectory-chip.disgust { background: rgba(22, 160, 133, 0.18); }
+.trajectory-chip.calm { background: rgba(46, 196, 182, 0.18); }
+.trajectory-chip.relaxed { background: rgba(168, 230, 207, 0.18); }
+.trajectory-chip.stressed { background: rgba(255, 111, 97, 0.18); }
+
+.trajectory-empty {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 14px;
+}
+
+.heatmap-grid {
+    display: grid;
+    gap: 8px;
+}
+
+.heatmap-row {
+    display: grid;
+    grid-template-columns: 90px repeat(7, minmax(0, 1fr));
+    gap: 8px;
+    align-items: center;
+}
+
+.heatmap-row span,
+.heatmap-label,
+.heatmap-cell {
+    font-size: 11px;
+}
+
+.heatmap-header span {
+    color: rgba(255, 255, 255, 0.65);
+    text-transform: capitalize;
+}
+
+.heatmap-label {
+    color: rgba(255, 255, 255, 0.86);
+    text-transform: capitalize;
+}
+
+.heatmap-cell {
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.distribution-bars {
+    display: grid;
+    gap: 10px;
+}
+
+.distribution-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 42px;
+    gap: 10px;
+    align-items: center;
+    font-size: 12px;
+    text-transform: capitalize;
+}
+
+@media (max-width: 900px) {
+    .live-affect-grid,
+    .analytics-metrics,
+    .analytics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .heatmap-row,
+    .distribution-row {
+        grid-template-columns: 1fr;
+    }
+
+    .analytics-panel-wide {
+        grid-column: auto;
+    }
+}
+
 .btn-skip {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
     color: white;

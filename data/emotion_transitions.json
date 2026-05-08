@@ -1,0 +1,32 @@
+{
+  "happy": {
+    "surprise": {
+      "count": 1,
+      "by_content": {
+        "song": 1
+      }
+    },
+    "happy": {
+      "count": 1,
+      "by_content": {
+        "song": 1
+      }
+    }
+  },
+  "surprise": {
+    "surprise": {
+      "count": 2,
+      "by_content": {
+        "song": 2
+      }
+    }
+  },
+  "angry": {
+    "happy": {
+      "count": 1,
+      "by_content": {
+        "song": 1
+      }
+    }
+  }
+}

@@ -90,6 +90,26 @@
                             (<span id="progress-percent">0</span>%)
                         </p>
                     </div>
+
+                    <div class="live-affect-panel">
+                        <div class="live-affect-header">
+                            <span class="live-affect-title">Live Affective State</span>
+                            <span id="live-latency" class="live-affect-meta">0 ms</span>
+                        </div>
+                        <div class="live-affect-grid">
+                            <div class="live-affect-card">
+                                <span class="live-label">Raw Emotion</span>
+                                <strong id="live-raw-emotion">Waiting...</strong>
+                                <small id="live-raw-confidence">0%</small>
+                            </div>
+                            <div class="live-affect-card">
+                                <span class="live-label">Stabilized Emotion</span>
+                                <strong id="live-stable-emotion">Waiting...</strong>
+                                <small id="live-stable-confidence">0%</small>
+                            </div>
+                        </div>
+                        <div id="live-confidence-bars" class="confidence-bars"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -116,6 +136,49 @@
                                 <div class="stat-label">Like Rate</div>
                                 <div id="like-rate" class="stat-value">0%</div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="analytics-card">
+                    <div class="analytics-header">
+                        <h3 class="analytics-title">Adaptive Learning Dashboard</h3>
+                        <p class="analytics-subtitle">Reward trends, transitions, and stabilization signals</p>
+                    </div>
+                    <div class="analytics-metrics">
+                        <div class="metric-pill">
+                            <span class="metric-label">Avg Reward</span>
+                            <strong id="avg-reward">0.000</strong>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="metric-label">Success Rate</span>
+                            <strong id="success-rate">0%</strong>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="metric-label">Mood Improvement</span>
+                            <strong id="improvement-rate">0%</strong>
+                        </div>
+                        <div class="metric-pill">
+                            <span class="metric-label">Convergence</span>
+                            <strong id="convergence-score">0.000</strong>
+                        </div>
+                    </div>
+                    <div class="analytics-grid">
+                        <div class="analytics-panel">
+                            <h4>Reward Trend</h4>
+                            <div id="reward-trend-chart" class="mini-chart"></div>
+                        </div>
+                        <div class="analytics-panel">
+                            <h4>Emotion Trajectory</h4>
+                            <div id="emotion-trajectory" class="trajectory-strip"></div>
+                        </div>
+                        <div class="analytics-panel analytics-panel-wide">
+                            <h4>Transition Heatmap</h4>
+                            <div id="transition-heatmap" class="heatmap-grid"></div>
+                        </div>
+                        <div class="analytics-panel analytics-panel-wide">
+                            <h4>Emotion Distribution</h4>
+                            <div id="emotion-distribution" class="distribution-bars"></div>
                         </div>
                     </div>
                 </div>

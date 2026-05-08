@@ -120,3 +120,65 @@
 {"timestamp": "2025-11-03T20:30:47.231940", "emotion": "neutral", "song_id": "Regretting You", "reward": -0.5}
 {"timestamp": "2025-11-03T20:30:48.062308", "emotion": "neutral", "song_id": "Forrest Gump", "reward": 1.0}
 {"timestamp": "2025-11-03T20:30:48.876567", "emotion": "neutral", "song_id": "Pan's Labyrinth", "reward": -0.5}
+{"timestamp": "2025-11-03T20:33:44.365121", "emotion": "happy", "song_id": "2pW5kNCx133MWWirxegvng", "reward": 1.0}
+{"timestamp": "2025-11-03T20:34:30.106730", "emotion": "surprise", "song_id": "7LqhdpcXoke9VgHsDj3AoP", "reward": 1.0}
+{"timestamp": "2025-11-03T20:34:31.329325", "emotion": "surprise", "song_id": "2FnmKpYraHvKyKdsy7KDOK", "reward": -0.5}
+{"timestamp": "2025-11-03T20:34:32.328416", "emotion": "surprise", "song_id": "6Ys3extOt6Qs7w5m3NVM0q", "reward": 1.0}
+{"timestamp": "2025-11-03T20:36:25.023065", "emotion": "sad", "song_id": "6JLbMP9MeGB7Odhw8PO1QB", "reward": 1.0}
+{"timestamp": "2025-11-03T20:36:26.304654", "emotion": "sad", "song_id": "0JChw6k59cZxegh0SGceE1", "reward": -0.5}
+{"timestamp": "2025-11-03T20:36:27.573678", "emotion": "sad", "song_id": "5ULIvl0zduD2l9g6hdXnDo", "reward": 1.0}
+{"timestamp": "2025-11-03T20:36:28.744826", "emotion": "sad", "song_id": "0q6LuUqGLUiCPP1cbdwFs3", "reward": -0.5}
+{"timestamp": "2025-11-03T20:36:29.860179", "emotion": "sad", "song_id": "0ZRTBsgVroKktG2qJoIzoo", "reward": 1.0}
+{"timestamp": "2025-11-03T20:36:31.235268", "emotion": "sad", "song_id": "1fcXn2WjZlTcuy228dUPVJ", "reward": 1.0}
+{"timestamp": "2025-11-03T20:36:40.924597", "emotion": "sad", "song_id": "Inside Out", "reward": 1.0}
+{"timestamp": "2025-11-03T20:46:26.062299", "emotion": "neutral", "song_id": "6VrBWh90BiwWmwKtvwWFcq", "reward": 1.0}
+{"timestamp": "2025-11-03T20:46:28.914157", "emotion": "neutral", "song_id": "3EPxiSj3RsjMMdKCM7pthV", "reward": -0.5}
+{"timestamp": "2025-11-03T20:46:30.023100", "emotion": "neutral", "song_id": "1LOq9dhGdooVe9KwNFDwuA", "reward": 1.0}
+{"timestamp": "2025-11-03T20:46:31.631967", "emotion": "neutral", "song_id": "2g9aiiRu6dteue5VD4DoOF", "reward": 1.0}
+{"timestamp": "2025-11-03T20:46:35.363020", "emotion": "neutral", "song_id": "Lost in Translation", "reward": 1.0}
+{"timestamp": "2025-11-03T20:46:37.085745", "emotion": "neutral", "song_id": "Paterson", "reward": -0.5}
+{"timestamp": "2025-11-03T20:46:38.760994", "emotion": "neutral", "song_id": "Her", "reward": 1.0}
+{"timestamp": "2025-11-03T20:46:51.378058", "emotion": "neutral", "song_id": "Before Sunrise", "reward": -0.5}
+{"timestamp": "2025-11-04T11:39:02.638656", "emotion": "surprise", "song_id": "7LqhdpcXoke9VgHsDj3AoP", "reward": 1.0}
+{"timestamp": "2025-11-04T11:39:07.292525", "emotion": "surprise", "song_id": "Demon Slayer: Kimetsu no Yaiba Infinity Castle", "reward": -0.5}
+{"timestamp": "2025-11-04T11:39:08.723903", "emotion": "surprise", "song_id": "Black Phone 2", "reward": 1.0}
+{"timestamp": "2025-11-04T11:39:24.636439", "emotion": "surprise", "song_id": "2FnmKpYraHvKyKdsy7KDOK", "reward": 1.0}
+{"timestamp": "2025-11-04T11:39:25.459918", "emotion": "surprise", "song_id": "6Ys3extOt6Qs7w5m3NVM0q", "reward": -0.5}
+{"timestamp": "2025-11-04T11:42:16.407202", "emotion": "surprise", "song_id": "7LqhdpcXoke9VgHsDj3AoP", "reward": 1.0}
+{"timestamp": "2025-11-04T11:42:17.841388", "emotion": "surprise", "song_id": "2FnmKpYraHvKyKdsy7KDOK", "reward": -0.5}
+{"timestamp": "2025-11-04T11:42:18.783125", "emotion": "surprise", "song_id": "66w7lK0t98OPgvYjXp39IP", "reward": 1.0}
+{"timestamp": "2025-11-04T11:42:19.831912", "emotion": "surprise", "song_id": "1aQ58u4guUf999iQX3J2HF", "reward": -0.5}
+{"timestamp": "2025-11-04T11:42:20.939022", "emotion": "surprise", "song_id": "6Ys3extOt6Qs7w5m3NVM0q", "reward": 1.0}
+{"timestamp": "2025-11-04T11:42:21.909579", "emotion": "surprise", "song_id": "5nDZex75Z6bcIBVzYX9k2c", "reward": 1.0}
+{"timestamp": "2025-11-04T11:42:23.625732", "emotion": "surprise", "song_id": "0JX7Es2j556FwtR6YqMKzP", "reward": 1.0}
+{"timestamp": "2025-11-04T11:42:24.690333", "emotion": "surprise", "song_id": "5KMj4vhaIhGx6vLKXc4iS8", "reward": -0.5}
+{"timestamp": "2025-11-04T11:42:26.024597", "emotion": "surprise", "song_id": "3NkkcnnKrNHv4AiGaPdD76", "reward": -0.5}
+{"timestamp": "2025-11-04T11:42:27.126797", "emotion": "surprise", "song_id": "7o65z7yxlOfbAiDxq9WZBy", "reward": 1.0}
+{"timestamp": "2025-11-04T11:42:28.392350", "emotion": "surprise", "song_id": "0LxieATP1Hom8KueHdG9V2", "reward": 1.0}
+{"timestamp": "2025-11-04T11:42:29.472619", "emotion": "surprise", "song_id": "3S7XptLRvV6bZrmrz7WhmA", "reward": -0.5}
+{"timestamp": "2025-11-04T11:47:01.555238", "emotion": "happy", "song_id": "2pW5kNCx133MWWirxegvng", "reward": 1.0}
+{"timestamp": "2025-11-04T11:47:02.419612", "emotion": "happy", "song_id": "5KMj4vhaIhGx6vLKXc4iS8", "reward": -0.5}
+{"timestamp": "2025-11-04T11:47:03.231473", "emotion": "happy", "song_id": "2FnmKpYraHvKyKdsy7KDOK", "reward": 1.0}
+{"timestamp": "2025-11-04T11:47:04.115687", "emotion": "happy", "song_id": "3n6tB0RkaxQkgWtF1LmsU9", "reward": -0.5}
+{"timestamp": "2025-11-04T11:47:07.272536", "emotion": "happy", "song_id": "The Grand Budapest Hotel", "reward": 1.0}
+{"timestamp": "2025-11-04T11:47:08.349449", "emotion": "happy", "song_id": "Am\u00e9lie", "reward": -0.5}
+{"timestamp": "2025-11-04T11:47:09.315585", "emotion": "happy", "song_id": "Paddington 2", "reward": 1.0}
+{"timestamp": "2025-11-04T11:47:10.260114", "emotion": "happy", "song_id": "The Secret Life of Walter Mitty", "reward": 1.0}
+{"timestamp": "2025-11-04T11:47:11.277624", "emotion": "happy", "song_id": "Paddington 2", "reward": 1.0}
+{"timestamp": "2025-11-04T11:47:12.926806", "emotion": "happy", "song_id": "The Secret Life of Walter Mitty", "reward": -0.5}
+{"timestamp": "2025-11-04T11:47:14.667657", "emotion": "happy", "song_id": "The Grand Budapest Hotel", "reward": -0.5}
+{"timestamp": "2025-11-04T11:47:15.558214", "emotion": "happy", "song_id": "Am\u00e9lie", "reward": 1.0}
+{"timestamp": "2025-11-04T11:47:16.561364", "emotion": "happy", "song_id": "Paddington 2", "reward": 1.0}
+{"timestamp": "2026-05-08T12:55:41.539366", "event_type": "reward_update", "emotion": "happy", "item_id": "h1", "content_type": "song", "feedback_score": 1.0, "engagement_score": 0.41405000000000003, "mood_improvement_score": 0.15, "completion_score": 1.0, "normalized_reward": 0.62781, "previous_emotion": "happy", "next_emotion": "happy", "q_before": 0.0, "q_after": 0.08959120832289831}
+{"timestamp": "2026-05-08T12:55:41.547367", "event_type": "interaction", "emotion": "happy", "content_id": "h1", "reward": 0.62781, "metadata": {"content_type": "song", "liked": true, "engagement_score": 0.41405000000000003, "completion_score": 1.0, "mood_improvement_score": 0.0}}
+{"timestamp": "2026-05-08T12:55:41.548366", "event_type": "feedback", "emotion": "happy", "content_type": "song", "content_id": "h1", "reward": 0.62781, "engagement_score": 0.41405000000000003, "completion_score": 1.0, "mood_improvement_score": 0.0, "liked": true}
+{"timestamp": "2026-05-08T12:55:43.508208", "event_type": "reward_update", "emotion": "happy", "item_id": "h2", "content_type": "song", "feedback_score": 1.0, "engagement_score": 0.07680000000000001, "mood_improvement_score": 0.15, "completion_score": 1.0, "normalized_reward": 0.56036, "previous_emotion": "happy", "next_emotion": "happy", "q_before": 0.0, "q_after": 0.08284620832289831}
+{"timestamp": "2026-05-08T12:55:43.516208", "event_type": "interaction", "emotion": "happy", "content_id": "h2", "reward": 0.56036, "metadata": {"content_type": "song", "liked": true, "engagement_score": 0.07680000000000001, "completion_score": 1.0, "mood_improvement_score": 0.0}}
+{"timestamp": "2026-05-08T12:55:43.517208", "event_type": "feedback", "emotion": "happy", "content_type": "song", "content_id": "h2", "reward": 0.56036, "engagement_score": 0.07680000000000001, "completion_score": 1.0, "mood_improvement_score": 0.0, "liked": true}
+{"timestamp": "2026-05-08T13:12:51.718532", "event_type": "reward_update", "emotion": "happy", "item_id": "song_abc123", "content_type": "song", "feedback_score": 1.0, "engagement_score": 0.8, "mood_improvement_score": 0.5, "completion_score": 1.0, "normalized_reward": 0.81, "previous_emotion": "happy", "next_emotion": "surprise", "q_before": 0.0, "q_after": 0.10781020832289832}
+{"timestamp": "2026-05-08T13:12:51.748016", "event_type": "reward_update", "emotion": "surprise", "item_id": "song_def456", "content_type": "song", "feedback_score": 1.0, "engagement_score": 0.7, "mood_improvement_score": 0.3, "completion_score": 1.0, "normalized_reward": 0.73, "previous_emotion": "surprise", "next_emotion": "surprise", "q_before": 0.0, "q_after": 0.10846359100000001}
+{"timestamp": "2026-05-08T13:14:56.655332", "event_type": "reward_update", "emotion": "surprise", "item_id": "song_1", "content_type": "song", "feedback_score": 1.0, "engagement_score": 0.8, "mood_improvement_score": 0.3, "completion_score": 1.0, "normalized_reward": 0.75, "previous_emotion": "happy", "next_emotion": "surprise", "q_before": 0.0, "q_after": 0.11046359100000001}
+{"timestamp": "2026-05-08T13:14:56.675835", "event_type": "reward_update", "emotion": "surprise", "item_id": "song_2", "content_type": "song", "feedback_score": 1.0, "engagement_score": 0.7, "mood_improvement_score": 0.3, "completion_score": 1.0, "normalized_reward": 0.73, "previous_emotion": "surprise", "next_emotion": "surprise", "q_before": 0.0, "q_after": 0.10846359100000001}
+{"timestamp": "2026-05-08T13:14:56.684578", "event_type": "reward_update", "emotion": "surprise", "item_id": "song_3", "content_type": "song", "feedback_score": -1.0, "engagement_score": 0.5, "mood_improvement_score": -0.2, "completion_score": 1.0, "normalized_reward": -0.26, "previous_emotion": "surprise", "next_emotion": "surprise", "q_before": 0.0, "q_after": 0.009463591}
+{"timestamp": "2026-05-08T13:14:56.696396", "event_type": "reward_update", "emotion": "happy", "item_id": "song_4", "content_type": "song", "feedback_score": 1.0, "engagement_score": 0.9, "mood_improvement_score": 0.4, "completion_score": 1.0, "normalized_reward": 0.8, "previous_emotion": "angry", "next_emotion": "happy", "q_before": 0.0, "q_after": 0.10681020832289832}
+{"timestamp": "2026-05-08T13:14:56.704514", "event_type": "reward_update", "emotion": "happy", "item_id": "song_5", "content_type": "song", "feedback_score": 1.0, "engagement_score": 0.8, "mood_improvement_score": 0.4, "completion_score": 1.0, "normalized_reward": 0.78, "previous_emotion": "happy", "next_emotion": "happy", "q_before": 0.0, "q_after": 0.10481020832289832}

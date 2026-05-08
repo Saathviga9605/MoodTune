@@ -3,6 +3,11 @@ opencv-python==4.11.0.86        # supports Python 3.13 per release notes :conten
 fer==22.5.1                      # as used previously
 mtcnn==1.0.0                    # as used previously
 numpy>=2.1.0,<3.0                # NumPy 2.x supports Python 3.13
+pandas>=2.2.0
+scipy>=1.12.0
+scikit-learn>=1.4.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
 pillow>=11.0.0
 moviepy                         # no strict version fixed; install latest that supports Python 3.13
 spotipy==2.23.0

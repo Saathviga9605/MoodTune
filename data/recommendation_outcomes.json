@@ -1,0 +1,74 @@
+[
+  {
+    "timestamp": "2026-05-08T12:55:41.539366",
+    "emotion": "happy",
+    "content_type": "song",
+    "item_id": "h1",
+    "success": true,
+    "normalized_reward": 0.62781
+  },
+  {
+    "timestamp": "2026-05-08T12:55:43.508208",
+    "emotion": "happy",
+    "content_type": "song",
+    "item_id": "h2",
+    "success": true,
+    "normalized_reward": 0.56036
+  },
+  {
+    "timestamp": "2026-05-08T13:12:51.718532",
+    "emotion": "happy",
+    "content_type": "song",
+    "item_id": "song_abc123",
+    "success": true,
+    "normalized_reward": 0.81
+  },
+  {
+    "timestamp": "2026-05-08T13:12:51.748016",
+    "emotion": "surprise",
+    "content_type": "song",
+    "item_id": "song_def456",
+    "success": true,
+    "normalized_reward": 0.73
+  },
+  {
+    "timestamp": "2026-05-08T13:14:56.655332",
+    "emotion": "surprise",
+    "content_type": "song",
+    "item_id": "song_1",
+    "success": true,
+    "normalized_reward": 0.75
+  },
+  {
+    "timestamp": "2026-05-08T13:14:56.675835",
+    "emotion": "surprise",
+    "content_type": "song",
+    "item_id": "song_2",
+    "success": true,
+    "normalized_reward": 0.73
+  },
+  {
+    "timestamp": "2026-05-08T13:14:56.684578",
+    "emotion": "surprise",
+    "content_type": "song",
+    "item_id": "song_3",
+    "success": false,
+    "normalized_reward": -0.26
+  },
+  {
+    "timestamp": "2026-05-08T13:14:56.696396",
+    "emotion": "happy",
+    "content_type": "song",
+    "item_id": "song_4",
+    "success": true,
+    "normalized_reward": 0.8
+  },
+  {
+    "timestamp": "2026-05-08T13:14:56.704514",
+    "emotion": "happy",
+    "content_type": "song",
+    "item_id": "song_5",
+    "success": true,
+    "normalized_reward": 0.78
+  }
+]
